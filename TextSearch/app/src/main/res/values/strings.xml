@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Text Search</string>
+    <string name="search">Type the text you want to search</string>
+    <string name="setting">Setting</string>
+    <string name="about">About Dev</string>
+    <string name="title_activity_main2">Main2Activity</string>
+</resources>

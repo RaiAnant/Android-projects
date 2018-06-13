@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Multiple_Activ</string>
+    <string name="button_name">Display Message</string>
+    <string name="disp_message">Display Message</string>
+    <string name="send_message">Send As Message</string>
+    <string name="chooser">Which activity would like to carry out this task?</string>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:title="@string/setting"
+        android:onClick="setting"
+        app:showAsAction="ifRoom"
+        android:orderInCategory="1"/>
+    <item android:title="@string/about"
+        android:orderInCategory="2"
+        android:onClick="aboutDev"
+        />
+
+</menu>
