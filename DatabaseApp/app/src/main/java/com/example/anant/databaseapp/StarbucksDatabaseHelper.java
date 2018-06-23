@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class StarbucksDatabaseHelper extends SQLiteOpenHelper{
 
     private static final String DB_NAME="Starbucks";
-    private static final int DB_VERSION=4;
+    private static final int DB_VERSION=6;
 
     public StarbucksDatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION );
@@ -37,14 +37,13 @@ public class StarbucksDatabaseHelper extends SQLiteOpenHelper{
             insertProduct(sqLiteDatabase,"DRINK" ,"Latte", "Hot mild coffe , with several shots of espresso and steamy milk ", R.drawable.latte);
             insertProduct(sqLiteDatabase,"DRINK" , "Cappuccino", "Sweet coffe, with milk cream and foam", R.drawable.latte);
             insertProduct(sqLiteDatabase,"DRINK" , "Filter", "Strong coffe, brimmed from high quality coffe beans with shots of espesso", R.drawable.latte);
+
         }
         if(oldVersion<2){
             sqLiteDatabase.execSQL("ALTER TABLE DRINK ADD COLUMN FAVOURITE NUMERIC");
             ContentValues contentValues = new ContentValues();
-            contentValues.put("FAVOURITE",2);
-            sqLiteDatabase.update("DRINK",contentValues,"_id=1",null);
-            contentValues.put("FAVOURITE",1);
-            sqLiteDatabase.update("DRINK",contentValues,"_id>1",null);
+            contentValues.put("FAVOURITE",0);
+            sqLiteDatabase.update("DRINK",contentValues,null,null);
         }
         if(oldVersion<3){
             sqLiteDatabase.execSQL("CREATE TABLE FOOD ("
@@ -67,6 +66,17 @@ public class StarbucksDatabaseHelper extends SQLiteOpenHelper{
                     sqLiteDatabase.update(tableName[i],contentValues,"_id=?",new String[] {Integer.toString(j+1)});
                 }
             }
+        }
+        if(oldVersion<5){
+            sqLiteDatabase.execSQL("ALTER TABLE FOOD ADD COLUMN FAVOURITE NUMERIC");
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("FAVOURITE",0);
+            sqLiteDatabase.update("FOOD",contentValues,null,null);
+        }
+        if(oldVersion<6){
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("FAVOURITE",0);
+            sqLiteDatabase.update("DRINK",contentValues,null,null);
         }
     }
     @Override
